@@ -40,17 +40,25 @@ const Login = () => {
 };
 
   return (
-    <div className="">
+    <div className="relative min-h-screen overflow-x-hidden">
       <Header />
-      <div className="absolute">
-        <img src={BACKGROUND_IMG}></img>
+      <div className="absolute inset-0 -z-10">
+        <img
+          className="w-full h-full object-cover"
+          src={BACKGROUND_IMG}
+          alt=""
+        />
       </div>
-      <form  key={login } onSubmit={(e) => { e.preventDefault() }} className="absolute w-3/12 p-16 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-70 rounded-md">
-        <h1 className="font-bold text-3xl py-4">{login == "Sign In" ? "Sign In" : "Sign Up"}</h1>
+      <form
+        key={login}
+        onSubmit={(e) => { e.preventDefault() }}
+        className="relative z-10 w-[92%] max-w-md sm:max-w-lg md:max-w-xl mx-auto mt-24 sm:mt-28 md:mt-36 p-6 sm:p-10 md:p-16 bg-black text-white bg-opacity-70 rounded-md"
+      >
+        <h1 className="font-bold text-2xl sm:text-3xl py-3 sm:py-4">{login == "Sign In" ? "Sign In" : "Sign Up"}</h1>
         {login === "Sign Up" ? <input type="text" ref={userName} placeholder="User Name" className="m-2 p-3 w-full bg-gray-800  rounded-md" /> : null}
         <input type="text" ref={email} placeholder="Email" className="m-2 p-3 w-full bg-gray-800  rounded-md" />
         <input type="password" ref={password} placeholder="Password" className="m-2 p-3 w-full bg-gray-800  rounded-md" />
-        <p className="font-bold text-lg p-2 text-red-700">{errMessage}</p>
+        <p className="font-bold text-sm sm:text-lg p-2 text-red-700 break-words">{errMessage}</p>
         <button className="m-2 p-3 bg-red-700  w-full rounded-md" onClick={() => { handleButtonClick() }}>{login == "Sign In" ? "Sign In" : "Sign Up"}</button>
         <div className="cursor-pointer" onClick={() => {
           setLogin(login == "Sign In" ? "Sign Up" : "Sign In" )

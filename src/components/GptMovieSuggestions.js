@@ -8,7 +8,7 @@ const GptMovieSuggestions = () => {
                     console.log("jds",movieData)
 
   return (
-    <div className='p-4 m-4 bg-black text-white bg-opacity-60 rounded-lg'>
+    <div className='p-2 sm:p-4 mx-2 sm:m-4 bg-black text-white bg-opacity-60 rounded-lg'>
         <div>
             {movieData.map((movie)=>(
                 <MovieList key={movie[0]?.id} title={movie[0]?.title} movies={movie}/>

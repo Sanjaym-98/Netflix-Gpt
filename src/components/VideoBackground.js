@@ -9,15 +9,15 @@ const VideoBackground =  ({ movieId }) => {
  let trailerId =  UseMovieTrailer(movieId);
 //  trailerId="Qah9sSIXJqk"
     return (
-
-        <div className='w-screen'>{
-            <iframe className='w-screen aspect-video '
+        <div className='w-full overflow-hidden'>
+            <iframe
+                className='w-full aspect-video max-h-[50vh] sm:max-h-none'
                 src={`https://www.youtube.com/embed/6wbMsDmJLCs?si=${trailerId}?&autoplay=1&mute=1`}
                 title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin">
-            </iframe>
-        }</div>
+                referrerPolicy="strict-origin-when-cross-origin"
+            />
+        </div>
     )
 };
 

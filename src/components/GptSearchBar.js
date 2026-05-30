@@ -70,13 +70,29 @@ const GptSearchBar = () => {
     }
   };
   return (
-    <div className='pt-[8%] flex justify-center rounded-md'>
-      <form className='w-1/2 bg-black grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
-        <input ref={searchText} type='text' className='p-4 m-4 col-span-9 rounded-lg' placeholder={lang[langKey].gptSearchPlaceholder} />
-        <button className='m-4  py-2 px-4 bg-red-700 col-span-3 text-white rounded-lg' onClick={() => handleGptSearch()}>{lang[langKey].search}</button>
+    <div className='pt-24 sm:pt-[10%] md:pt-[8%] flex flex-col items-center px-3 sm:px-4 rounded-md'>
+      <form
+        className='w-full max-w-3xl bg-black flex flex-col sm:grid sm:grid-cols-12 gap-2 sm:gap-0'
+        onSubmit={(e) => e.preventDefault()}
+      >
+        <input
+          ref={searchText}
+          type='text'
+          className='p-3 sm:p-4 m-0 sm:m-4 sm:col-span-9 rounded-lg text-sm sm:text-base'
+          placeholder={lang[langKey].gptSearchPlaceholder}
+        />
+        <button
+          className='py-3 sm:py-2 px-4 m-0 sm:m-4 bg-red-700 sm:col-span-3 text-white rounded-lg text-sm sm:text-base'
+          onClick={() => handleGptSearch()}
+        >
+          {lang[langKey].search}
+        </button>
       </form>
-      {loading == true ? <p className='text-white'>Please wait while we fetch your movies, sit back and relax!</p> : null}
-
+      {loading === true ? (
+        <p className='text-white text-center text-sm sm:text-base mt-4 px-4 max-w-lg'>
+          Please wait while we fetch your movies, sit back and relax!
+        </p>
+      ) : null}
     </div>
   )
 }

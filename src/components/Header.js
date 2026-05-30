@@ -50,21 +50,38 @@ const Header = () => {
   }
   return (
     <div className="relative">
-      <div className="absolute z-10 bg-gradient-to-b from-black w-full flex justify-between items-center px-6">
+      <div className="absolute z-10 bg-gradient-to-b from-black w-full flex flex-wrap justify-between items-center gap-2 px-3 py-2 sm:px-6 sm:py-0">
 
-        <img className="w-44" src={LOGO}></img>
+        <img className="w-20 sm:w-32 md:w-44" src={LOGO} alt="Netflix" />
 
         {user ?
-          <div>
-            {gptSearch ? <select className="p-2 m-2 bg-gray-900 text-cyan-50 rounded-md" onChange={(e) => handleLanguageChange(e)}>
-              {SUPPORTED_LANGUAGES.map((lang) => <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
-            </select> : null
-            }
-            <button className="py-2 px-4 m-2 bg-purple-800 rounded-lg text-white" onClick={() => handleGptSearch()}>{gptSearch ? "Home Page": "Ask AI ✨"}</button>
-            <button className="font-bold  text-white" onClick={() => handleSignOut()}>{user.displayName ? user.displayName : "UNKNOWN"} Sign Out</button>
+          <div className="flex flex-wrap items-center justify-end gap-1 sm:gap-2 max-w-[70%] sm:max-w-none">
+            {gptSearch ? (
+              <select
+                className="p-1.5 sm:p-2 text-xs sm:text-sm bg-gray-900 text-cyan-50 rounded-md max-w-[5.5rem] sm:max-w-none"
+                onChange={(e) => handleLanguageChange(e)}
+              >
+                {SUPPORTED_LANGUAGES.map((lang) => (
+                  <option key={lang.identifier} value={lang.identifier}>{lang.name}</option>
+                ))}
+              </select>
+            ) : null}
+            <button
+              className="py-1.5 px-2 sm:py-2 sm:px-4 text-xs sm:text-sm bg-purple-800 rounded-lg text-white whitespace-nowrap"
+              onClick={() => handleGptSearch()}
+            >
+              {gptSearch ? "Home" : "Ask AI ✨"}
+            </button>
+            <button
+              className="font-bold text-white text-xs sm:text-sm py-1 px-1 sm:py-2 sm:px-2 whitespace-nowrap"
+              onClick={() => handleSignOut()}
+            >
+              <span className="hidden sm:inline">{user.displayName ? user.displayName : "UNKNOWN"} </span>
+              Sign Out
+            </button>
           </div>
           : null}
-    
+
       </div>
     </div>
   )
